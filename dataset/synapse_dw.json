@@ -1,0 +1,16 @@
+{
+	"name": "synapse_dw",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "synapse_dw_service",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [],
+		"typeProperties": {
+			"table": "ev_raw"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

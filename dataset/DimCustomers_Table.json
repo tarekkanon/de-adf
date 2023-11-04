@@ -1,0 +1,36 @@
+{
+	"name": "DimCustomers_Table",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "synapse_dw_service",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "CustomerSK",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CustomerID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CompanyName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SalesPerson",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "DimCustomers"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,12 @@
+{
+	"name": "AdventureWorksDB_service",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"connectionString": "integrated security=False;encrypt=True;connection timeout=30;data source=tk-etl-db-server.database.windows.net;initial catalog=tk_etl_db;user id=sqladmin",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQEM1M0VERjg1LUUyQTQtNEZFRi1BOUI3LTk4QzFFQkZGMTUwM19lMTQyNDFkYy1hYmEwLTRiZjEtOTA2MC0zYTg0NzVjMThlYjAiDQp9"
+		}
+	}
+}

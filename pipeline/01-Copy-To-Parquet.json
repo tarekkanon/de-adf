@@ -1,0 +1,313 @@
+{
+	"name": "01-Copy-To-Parquet",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copytoparquet",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "ParquetSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "ParquetWriteSettings"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "VIN (1-10)",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "VIN_1_10",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "County",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "County",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "City",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "City",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "State",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "State",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Postal Code",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PostalCode",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Model Year",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ModelYear",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Make",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Make",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Model",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Model",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Electric Vehicle Type",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ElectricVehicleType",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Clean Alternative Fuel Vehicle (CAFV) Eligibility",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CleanAlternativeFuelVehicle_CAFV_Eligibility",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Electric Range",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ElectricRange",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Base MSRP",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "BaseMSRP",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Legislative District",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LegislativeDistrict",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "DOL Vehicle ID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "DOLVehicleID",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Vehicle Location",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "VehicleLocation",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Electric Utility",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ElectricUtility",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "2020 Census Tract",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "2020CensusTract",
+									"physicalType": "UTF8"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "evpd_csv",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "evpd_parquet",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Copytodw",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Copytoparquet",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "ParquetSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"wildcardFileName": "*.parquet",
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "ParquetReadSettings"
+						}
+					},
+					"sink": {
+						"type": "SqlDWSink",
+						"allowCopyCommand": true,
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "evpd_parquet",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "synapse_dw",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2023-11-02T08:41:32Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,9 @@
+{
+	"name": "datafact90134",
+	"location": "westeurope",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "90a50de0-6c42-453d-b01e-e3cddbef9bf1",
+		"tenantId": "da8e3c35-939c-48b3-bfb6-8249ec2ee298"
+	}
+}
