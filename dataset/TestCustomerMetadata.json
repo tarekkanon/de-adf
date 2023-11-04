@@ -1,0 +1,53 @@
+{
+	"name": "TestCustomerMetadata",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AdventureWorksDB_service",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Names",
+				"type": "varchar"
+			},
+			{
+				"name": "Age",
+				"type": "varchar"
+			},
+			{
+				"name": "Total_Purchase",
+				"type": "varchar"
+			},
+			{
+				"name": "Account_Manager",
+				"type": "varchar"
+			},
+			{
+				"name": "Years",
+				"type": "varchar"
+			},
+			{
+				"name": "Num_Sites",
+				"type": "varchar"
+			},
+			{
+				"name": "Onboard_date",
+				"type": "varchar"
+			},
+			{
+				"name": "Location",
+				"type": "varchar"
+			},
+			{
+				"name": "Company",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "TestCustomerMeta"
+		}
+	}
+}
