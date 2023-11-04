@@ -74,7 +74,7 @@
 							"dependsOn": [],
 							"policy": {
 								"timeout": "0.00:10:00",
-								"retry": 2,
+								"retry": 0,
 								"retryIntervalInSeconds": 30,
 								"secureOutput": false,
 								"secureInput": false
@@ -100,6 +100,116 @@
 								"enableStaging": false,
 								"translator": {
 									"type": "TabularTranslator",
+									"mappings": [
+										{
+											"source": {
+												"name": "Names",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "Names",
+												"type": "String",
+												"physicalType": "varchar"
+											}
+										},
+										{
+											"source": {
+												"name": "Age",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "Age",
+												"type": "String",
+												"physicalType": "varchar"
+											}
+										},
+										{
+											"source": {
+												"name": "Total_Purchase",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "Total_Purchase",
+												"type": "String",
+												"physicalType": "varchar"
+											}
+										},
+										{
+											"source": {
+												"name": "Account_Manager",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "Account_Manager",
+												"type": "String",
+												"physicalType": "varchar"
+											}
+										},
+										{
+											"source": {
+												"name": "Years",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "Years",
+												"type": "String",
+												"physicalType": "varchar"
+											}
+										},
+										{
+											"source": {
+												"name": "Num_Sites",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "Num_Sites",
+												"type": "String",
+												"physicalType": "varchar"
+											}
+										},
+										{
+											"source": {
+												"name": "Onboard_date",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "Onboard_date",
+												"type": "String",
+												"physicalType": "varchar"
+											}
+										},
+										{
+											"source": {
+												"name": "Location",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "Location",
+												"type": "String",
+												"physicalType": "varchar"
+											}
+										},
+										{
+											"source": {
+												"name": "Company",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "Company",
+												"type": "String",
+												"physicalType": "varchar"
+											}
+										}
+									],
 									"typeConversion": true,
 									"typeConversionSettings": {
 										"allowDataTruncation": true,
