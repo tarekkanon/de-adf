@@ -908,546 +908,200 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/01-Copy-To-Parquet')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
+			"name": "[concat(parameters('factoryName'), '/NewCustomersCSVMetadata')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
-				"activities": [
-					{
-						"name": "Copytoparquet",
-						"type": "Copy",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "DelimitedTextSource",
-								"storeSettings": {
-									"type": "AzureBlobFSReadSettings",
-									"recursive": true,
-									"enablePartitionDiscovery": false
-								},
-								"formatSettings": {
-									"type": "DelimitedTextReadSettings"
-								}
-							},
-							"sink": {
-								"type": "ParquetSink",
-								"storeSettings": {
-									"type": "AzureBlobFSWriteSettings"
-								},
-								"formatSettings": {
-									"type": "ParquetWriteSettings"
-								}
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"mappings": [
-									{
-										"source": {
-											"name": "VIN (1-10)",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "VIN_1_10",
-											"physicalType": "UTF8"
-										}
-									},
-									{
-										"source": {
-											"name": "County",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "County",
-											"type": "String",
-											"physicalType": "UTF8"
-										}
-									},
-									{
-										"source": {
-											"name": "City",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "City",
-											"type": "String",
-											"physicalType": "UTF8"
-										}
-									},
-									{
-										"source": {
-											"name": "State",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "State",
-											"type": "String",
-											"physicalType": "UTF8"
-										}
-									},
-									{
-										"source": {
-											"name": "Postal Code",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "PostalCode",
-											"physicalType": "UTF8"
-										}
-									},
-									{
-										"source": {
-											"name": "Model Year",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "ModelYear",
-											"physicalType": "UTF8"
-										}
-									},
-									{
-										"source": {
-											"name": "Make",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "Make",
-											"type": "String",
-											"physicalType": "UTF8"
-										}
-									},
-									{
-										"source": {
-											"name": "Model",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "Model",
-											"type": "String",
-											"physicalType": "UTF8"
-										}
-									},
-									{
-										"source": {
-											"name": "Electric Vehicle Type",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "ElectricVehicleType",
-											"physicalType": "UTF8"
-										}
-									},
-									{
-										"source": {
-											"name": "Clean Alternative Fuel Vehicle (CAFV) Eligibility",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "CleanAlternativeFuelVehicle_CAFV_Eligibility",
-											"physicalType": "UTF8"
-										}
-									},
-									{
-										"source": {
-											"name": "Electric Range",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "ElectricRange",
-											"physicalType": "UTF8"
-										}
-									},
-									{
-										"source": {
-											"name": "Base MSRP",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "BaseMSRP",
-											"physicalType": "UTF8"
-										}
-									},
-									{
-										"source": {
-											"name": "Legislative District",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "LegislativeDistrict",
-											"physicalType": "UTF8"
-										}
-									},
-									{
-										"source": {
-											"name": "DOL Vehicle ID",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "DOLVehicleID",
-											"physicalType": "UTF8"
-										}
-									},
-									{
-										"source": {
-											"name": "Vehicle Location",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "VehicleLocation",
-											"physicalType": "UTF8"
-										}
-									},
-									{
-										"source": {
-											"name": "Electric Utility",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "ElectricUtility",
-											"physicalType": "UTF8"
-										}
-									},
-									{
-										"source": {
-											"name": "2020 Census Tract",
-											"type": "String",
-											"physicalType": "String"
-										},
-										"sink": {
-											"name": "2020CensusTract",
-											"physicalType": "UTF8"
-										}
-									}
-								],
-								"typeConversion": true,
-								"typeConversionSettings": {
-									"allowDataTruncation": true,
-									"treatBooleanAsNumber": false
-								}
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "evpd_csv",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "evpd_parquet",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					},
-					{
-						"name": "Copytodw",
-						"type": "Copy",
-						"dependsOn": [
-							{
-								"activity": "Copytoparquet",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "ParquetSource",
-								"storeSettings": {
-									"type": "AzureBlobFSReadSettings",
-									"recursive": true,
-									"wildcardFileName": "*.parquet",
-									"enablePartitionDiscovery": false
-								},
-								"formatSettings": {
-									"type": "ParquetReadSettings"
-								}
-							},
-							"sink": {
-								"type": "SqlDWSink",
-								"allowCopyCommand": true,
-								"copyCommandSettings": {},
-								"tableOption": "autoCreate",
-								"disableMetricsCollection": false
-							},
-							"enableStaging": false
-						},
-						"inputs": [
-							{
-								"referenceName": "evpd_parquet",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "synapse_dw",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {}
+				"linkedServiceName": {
+					"referenceName": "evpdcsv_service",
+					"type": "LinkedServiceReference"
 				},
 				"annotations": [],
-				"lastPublishTime": "2023-11-02T08:41:32Z"
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/evpd_csv')]",
-				"[concat(variables('factoryId'), '/datasets/evpd_parquet')]",
-				"[concat(variables('factoryId'), '/datasets/synapse_dw')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/03-Web1')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": "forWeb",
+						"fileSystem": "csv"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
 					{
-						"name": "CheckLink",
-						"type": "WebActivity",
-						"state": "Inactive",
-						"onInactiveMarkAs": "Succeeded",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "0.00:10:00",
-							"retry": 5,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"url": "https://www.google.com/",
-							"method": "GET",
-							"headers": {}
-						}
+						"name": "Names",
+						"type": "String"
 					},
 					{
-						"name": "GetFolderMetadata",
-						"type": "GetMetadata",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "0.00:10:00",
-							"retry": 2,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"dataset": {
-								"referenceName": "evpd_csv",
-								"type": "DatasetReference",
-								"parameters": {}
-							},
-							"fieldList": [
-								"itemName",
-								"columnCount"
-							],
-							"storeSettings": {
-								"type": "AzureBlobFSReadSettings",
-								"enablePartitionDiscovery": false
-							},
-							"formatSettings": {
-								"type": "DelimitedTextReadSettings"
-							}
-						}
+						"name": "Age",
+						"type": "String"
+					},
+					{
+						"name": "Total_Purchase",
+						"type": "String"
+					},
+					{
+						"name": "Account_Manager",
+						"type": "String"
+					},
+					{
+						"name": "Years",
+						"type": "String"
+					},
+					{
+						"name": "Num_Sites",
+						"type": "String"
+					},
+					{
+						"name": "Onboard_date",
+						"type": "String"
+					},
+					{
+						"name": "Location",
+						"type": "String"
+					},
+					{
+						"name": "Company",
+						"type": "String"
 					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {}
-				},
-				"annotations": []
+				]
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/evpd_csv')]"
+				"[concat(variables('factoryId'), '/linkedServices/evpdcsv_service')]"
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/01_dataflow_FactSales')]",
-			"type": "Microsoft.DataFactory/factories/dataflows",
+			"name": "[concat(parameters('factoryName'), '/TestCustomerMetadata')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
-				"type": "MappingDataFlow",
+				"linkedServiceName": {
+					"referenceName": "AdventureWorksDB_service",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "Names",
+						"type": "varchar"
+					},
+					{
+						"name": "Age",
+						"type": "varchar"
+					},
+					{
+						"name": "Total_Purchase",
+						"type": "varchar"
+					},
+					{
+						"name": "Account_Manager",
+						"type": "varchar"
+					},
+					{
+						"name": "Years",
+						"type": "varchar"
+					},
+					{
+						"name": "Num_Sites",
+						"type": "varchar"
+					},
+					{
+						"name": "Onboard_date",
+						"type": "varchar"
+					},
+					{
+						"name": "Location",
+						"type": "varchar"
+					},
+					{
+						"name": "Company",
+						"type": "varchar"
+					}
+				],
 				"typeProperties": {
-					"sources": [
-						{
-							"dataset": {
-								"referenceName": "SalesOrderDetail_Table",
-								"type": "DatasetReference"
-							},
-							"name": "SalesOrderDetailStream"
-						},
-						{
-							"dataset": {
-								"referenceName": "SalesOrderHeader_Table",
-								"type": "DatasetReference"
-							},
-							"name": "SalesOrderHeaderStream"
-						}
-					],
-					"sinks": [
-						{
-							"dataset": {
-								"referenceName": "DW_FactSales_Table",
-								"type": "DatasetReference"
-							},
-							"name": "FactSalesStream"
-						}
-					],
-					"transformations": [
-						{
-							"name": "SalesOrderDetailToSalesOrderHeader"
-						},
-						{
-							"name": "SelectColumnsStream"
-						},
-						{
-							"name": "TotalAmountStream"
-						}
-					],
-					"scriptLines": [
-						"source(output(",
-						"          SalesOrderID as integer,",
-						"          SalesOrderDetailID as integer,",
-						"          OrderQty as integer,",
-						"          ProductID as integer,",
-						"          UnitPrice as decimal(19,4),",
-						"          UnitPriceDiscount as decimal(19,4),",
-						"          LineTotal as decimal(38,6),",
-						"          rowguid as string,",
-						"          ModifiedDate as timestamp",
-						"     ),",
-						"     allowSchemaDrift: true,",
-						"     validateSchema: false,",
-						"     isolationLevel: 'READ_UNCOMMITTED',",
-						"     format: 'table') ~> SalesOrderDetailStream",
-						"source(output(",
-						"          SalesOrderID as integer,",
-						"          RevisionNumber as integer,",
-						"          OrderDate as timestamp,",
-						"          DueDate as timestamp,",
-						"          ShipDate as timestamp,",
-						"          Status as integer,",
-						"          OnlineOrderFlag as boolean,",
-						"          SalesOrderNumber as string,",
-						"          PurchaseOrderNumber as string,",
-						"          AccountNumber as string,",
-						"          CustomerID as integer,",
-						"          ShipToAddressID as integer,",
-						"          BillToAddressID as integer,",
-						"          ShipMethod as string,",
-						"          CreditCardApprovalCode as string,",
-						"          SubTotal as decimal(19,4),",
-						"          TaxAmt as decimal(19,4),",
-						"          Freight as decimal(19,4),",
-						"          TotalDue as decimal(19,4),",
-						"          Comment as string,",
-						"          rowguid as string,",
-						"          ModifiedDate as timestamp",
-						"     ),",
-						"     allowSchemaDrift: true,",
-						"     validateSchema: false,",
-						"     isolationLevel: 'READ_UNCOMMITTED',",
-						"     format: 'table') ~> SalesOrderHeaderStream",
-						"SalesOrderDetailStream, SalesOrderHeaderStream join(SalesOrderDetailStream@SalesOrderID == SalesOrderHeaderStream@SalesOrderID,",
-						"     joinType:'left',",
-						"     matchType:'exact',",
-						"     ignoreSpaces: false,",
-						"     broadcast: 'auto')~> SalesOrderDetailToSalesOrderHeader",
-						"SalesOrderDetailToSalesOrderHeader select(mapColumn(",
-						"          SalesOrderID = SalesOrderDetailStream@SalesOrderID,",
-						"          SalesOrderDetailID,",
-						"          OrderQty,",
-						"          ProductID,",
-						"          UnitPrice,",
-						"          LineTotal,",
-						"          OrderDate,",
-						"          CustomerID,",
-						"          TaxAmt",
-						"     ),",
-						"     skipDuplicateMapInputs: true,",
-						"     skipDuplicateMapOutputs: true) ~> SelectColumnsStream",
-						"SelectColumnsStream derive(TotalAmount = multiply(UnitPrice, OrderQty)) ~> TotalAmountStream",
-						"TotalAmountStream sink(allowSchemaDrift: true,",
-						"     validateSchema: false,",
-						"     input(",
-						"          SalesOrderID as integer,",
-						"          OrderQty as integer,",
-						"          ProductID as integer,",
-						"          UnitPrice as decimal(19,4),",
-						"          LineTotal as decimal(38,6),",
-						"          OrderDate as timestamp,",
-						"          CustomerID as integer,",
-						"          TaxAmt as decimal(19,4),",
-						"          TotalAmount as decimal(19,4)",
-						"     ),",
-						"     deletable:false,",
-						"     insertable:true,",
-						"     updateable:false,",
-						"     upsertable:false,",
-						"     format: 'table',",
-						"     staged: true,",
-						"     allowCopyCommand: true,",
-						"     skipDuplicateMapInputs: true,",
-						"     skipDuplicateMapOutputs: true,",
-						"     errorHandlingOption: 'stopOnFirstError',",
-						"     mapColumn(",
-						"          SalesOrderID,",
-						"          OrderQty,",
-						"          ProductID,",
-						"          UnitPrice,",
-						"          LineTotal,",
-						"          OrderDate,",
-						"          CustomerID,",
-						"          TaxAmt,",
-						"          TotalAmount",
-						"     )) ~> FactSalesStream"
-					]
+					"schema": "dbo",
+					"table": "TestCustomerMeta"
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/SalesOrderDetail_Table')]",
-				"[concat(variables('factoryId'), '/datasets/SalesOrderHeader_Table')]",
-				"[concat(variables('factoryId'), '/datasets/DW_FactSales_Table')]"
+				"[concat(variables('factoryId'), '/linkedServices/AdventureWorksDB_service')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/NewCustomersMetadataFile')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "evpdcsv_service",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"filename": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": {
+							"value": "@dataset().filename",
+							"type": "Expression"
+						},
+						"folderPath": "forWeb",
+						"fileSystem": "csv"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "Names",
+						"type": "String"
+					},
+					{
+						"name": "Age",
+						"type": "String"
+					},
+					{
+						"name": "Total_Purchase",
+						"type": "String"
+					},
+					{
+						"name": "Account_Manager",
+						"type": "String"
+					},
+					{
+						"name": "Years",
+						"type": "String"
+					},
+					{
+						"name": "Num_Sites",
+						"type": "String"
+					},
+					{
+						"name": "Onboard_date",
+						"type": "String"
+					},
+					{
+						"name": "Location",
+						"type": "String"
+					},
+					{
+						"name": "Company",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/evpdcsv_service')]"
 			]
 		}
 	]
